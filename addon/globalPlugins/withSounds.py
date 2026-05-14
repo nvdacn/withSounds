@@ -1,4 +1,4 @@
-# With sounds
+"""Play earcons for links and visited links."""
 
 import os
 import controlTypes
@@ -8,11 +8,17 @@ import speech
 from speech.types import SpeechSequence
 
 SOUNDS_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "sounds")
+LINK_SOUND_PATH = os.path.join(SOUNDS_PATH, "link.wav")
+VISITED_LINK_SOUND_PATH = os.path.join(SOUNDS_PATH, "visitedLink.wav")
 
 
 class GlobalPlugin(globalPluginHandler.GlobalPlugin):
+	"""Replace link speech with earcons, including a distinct visited-link sound."""
+
 	def __init__(self, *args, **kwargs):
+		"""Install the speech hook used by this add-on."""
 		super().__init__(*args, **kwargs)
+		self._pendingLinkSpeech = False
 		self._NVDA_getSpeechTextForProperties = speech.speech.getPropertiesSpeech
 		speech.speech.getPropertiesSpeech = self._hook_getSpeechTextForProperties
 
@@ -21,16 +27,30 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		reason: OutputReason = OutputReason.QUERY,
 		**propertyValues,
 	) -> SpeechSequence:
+		"""Insert the link earcon and suppress the spoken visited state."""
 		before = []
+		visited = False
+		isLink = propertyValues.get("role", None) == controlTypes.ROLE_LINK
 		states = propertyValues.get("states", None)
-		if states and controlTypes.STATE_VISITED in states:
-			states.remove(controlTypes.STATE_VISITED)
-		role = propertyValues.get("role", None)
-		if role and role == controlTypes.ROLE_LINK:
+		if isLink:
 			del propertyValues["role"]
-			before.append(speech.commands.WaveFileCommand(os.path.join(SOUNDS_PATH, "link.wav")))
+			if states is None:
+				self._pendingLinkSpeech = True
+		if states is not None:
+			if controlTypes.STATE_VISITED in states:
+				visited = True
+				states = set(states)
+				states.discard(controlTypes.STATE_VISITED)
+				propertyValues["states"] = states
+		soundPath = VISITED_LINK_SOUND_PATH if visited else LINK_SOUND_PATH
+		if self._pendingLinkSpeech and "_role" in propertyValues:
+			before.append(speech.commands.WaveFileCommand(soundPath))
+			self._pendingLinkSpeech = False
+		elif isLink and states is not None:
+			before.append(speech.commands.WaveFileCommand(soundPath))
 		return before + self._NVDA_getSpeechTextForProperties(reason, **propertyValues)
 
 	def terminate(self):
+		"""Restore NVDA's original speech hook during add-on shutdown."""
 		speech.speech.getPropertiesSpeech = self._NVDA_getSpeechTextForProperties
 		super().terminate()

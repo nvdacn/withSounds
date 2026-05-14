@@ -9,7 +9,7 @@ WithSounds is a simple NVDA add-on designed to enhance your browsing and compute
 ## Features
 
 * **Link Role Earcon Replacement:** Replaces NVDA's default spoken feedback for elements with the "link" role in browse mode with a distinct earcon. Instead of hearing "link" spoken aloud, you will now hear a short, pleasant sound to indicate a link. This can significantly reduce speech clutter, especially on web pages with numerous links.
-* **Visited Link State Suppression:**  WithSounds also suppresses NVDA's announcement of the "visited" state for links. This provides a cleaner and less repetitive browsing experience, particularly if you find the "visited" state announcement redundant.
+* **Visited Link Earcon:** WithSounds plays a separate earcon for visited links, while still suppressing NVDA's spoken "visited" state. This keeps the link cue distinct without adding extra speech.
 
 ## Important Notes
 
