@@ -23,12 +23,12 @@ addon_info = AddonInfo(
 	# Translators: Long description to be shown for this add-on on add-on information from add-on store
 	addon_description=_("""Enhance your NVDA experience with earcons!"""),
 	# version
-	addon_version="0.0.5",
+	addon_version="0.0.6",
 	# Brief changelog for this version
 	# Translators: what's new content for the add-on version to be shown in the add-on store
-	addon_changelog=_("""### 0.0.5
+	addon_changelog=_("""### 0.0.6
 
-Bump version, compatible with NVDA 2026.1.0."""),
+Add a distinct earcon for visited links."""),
 	# Author(s)
 	addon_author="zh-yx <zhyx-work@outlook.com>, Cary-rowen <cary-rowen@outlook.com>",
 	# URL for the add-on documentation support

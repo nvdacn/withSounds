@@ -1,3 +1,3 @@
-### 0.0.5
+### 0.0.6
 
-Bump version, compatible with NVDA 2026.1.0.
+Add a distinct earcon for visited links.
