@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: withSounds 0.0.6\n"
-"Report-Msgid-Bugs-To: nvda-translations@groups.io\n"
-"POT-Creation-Date: 2026-05-15 08:18+0800\n"
-"PO-Revision-Date: 2026-05-17 00:00+0800\n"
+"Report-Msgid-Bugs-To: 'nvda-translations@groups.io'\n"
+"POT-Creation-Date: 2026-05-17 13:38+0800\n"
+"PO-Revision-Date: 2026-05-17 13:41+0800\n"
 "Last-Translator: Codex <noreply@openai.com>\n"
 "Language-Team: Chinese (Simplified)\n"
 "Language: zh_CN\n"
@@ -16,6 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.9\n"
 
 #. Add-on summary/title, usually the user visible name of the add-on
 #. Translators: Summary/title for this add-on
@@ -28,16 +29,25 @@ msgstr "With Sounds"
 #. Translators: Long description to be shown for this add-on on add-on information from add-on store
 #: buildVars.py:24
 msgid "Enhance your NVDA experience with earcons!"
-msgstr "用耳标增强你的 NVDA 体验！"
+msgstr "用耳标（Earcons）增强你的 NVDA 使用体验！"
 
 #. Brief changelog for this version
 #. Translators: what's new content for the add-on version to be shown in the add-on store
 #: buildVars.py:29
 msgid ""
-"### 0.0.6\n"
+"### 0.1.0\n"
 "\n"
-"Add a distinct earcon for visited links."
+"Update Chinese translation."
 msgstr ""
-"### 0.0.6\n"
+"### 0.1.0\n"
 "\n"
-"为已访问链接添加了单独的耳标。"
+"更新中文翻译。"
+
+#~ msgid ""
+#~ "### 0.0.6\n"
+#~ "\n"
+#~ "Add a distinct earcon for visited links."
+#~ msgstr ""
+#~ "### 0.0.6\n"
+#~ "\n"
+#~ "为已访问链接添加了单独的耳标。"
