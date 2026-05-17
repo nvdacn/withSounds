@@ -1,3 +1,3 @@
-### 0.0.6
+### 0.1.0
 
-Add a distinct earcon for visited links.
+Update Chinese translation.
