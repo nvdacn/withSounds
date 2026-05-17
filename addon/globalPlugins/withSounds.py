@@ -1,4 +1,6 @@
-"""Play earcons for links and visited links."""
+# Copyright (C) 2026 zh-yx <zhyx-work@outlook.com>, Cary-rowen <cary-rowen@outlook.com>
+# This file is covered by the GNU General Public License.
+# See the file COPYING for more details.
 
 import os
 import controlTypes
@@ -13,10 +15,8 @@ VISITED_LINK_SOUND_PATH = os.path.join(SOUNDS_PATH, "visitedLink.wav")
 
 
 class GlobalPlugin(globalPluginHandler.GlobalPlugin):
-	"""Replace link speech with earcons, including a distinct visited-link sound."""
 
 	def __init__(self, *args, **kwargs):
-		"""Install the speech hook used by this add-on."""
 		super().__init__(*args, **kwargs)
 		self._pendingLinkSpeech = False
 		self._NVDA_getSpeechTextForProperties = speech.speech.getPropertiesSpeech
@@ -51,6 +51,5 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		return before + self._NVDA_getSpeechTextForProperties(reason, **propertyValues)
 
 	def terminate(self):
-		"""Restore NVDA's original speech hook during add-on shutdown."""
 		speech.speech.getPropertiesSpeech = self._NVDA_getSpeechTextForProperties
 		super().terminate()
